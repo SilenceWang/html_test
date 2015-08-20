@@ -2,7 +2,7 @@
 <html> 
 <head> 
     <meta charset="UTF-8" /> 
-    <title>纯html+css导航</title> 
+    <title>index.html</title> 
 
 <style>
 *{ 
@@ -24,14 +24,14 @@ nav{
     -moz-border-radius: 5px; 
     -webkit-border-radius: 5px; 
     /*margin:50px; */
-    margin:10px;
-    width: 900px;
+    margin:10px 5% 0px 5%;
+    width: 90%;
     -webkit-box-shadow:1px 1px 3px #292929; 
     -moz-box-shadow:1px 1px 3px #292929; 
     display:inline-block; 
 } 
 li{ 
-    width: 180px;
+    width: 20%;
     display:inline-block;
     list-style:none; 
     float:left; 
@@ -78,8 +78,10 @@ dl{
     position:absolute; 
     display:block; 
     top:40px; 
-    left: -25px; 
+    /*left: -25px; */
+    left: auto;
     width:165px; 
+    /*width: 20%;*/
     background:#222222; 
     -moz-border-radius: 5px; 
     -webkit-border-radius: 5px; 
@@ -90,7 +92,8 @@ dl{
 li:hover dl{ 
     top:50px; 
     display:block; 
-    width:200px; 
+    /*width:200px; */
+    width:100%; 
     padding:10px; 
     text-align: center;
 } 
@@ -112,7 +115,8 @@ dl a:hover{
 dd{ 
     margin-top:-40px; 
     opacity:0; 
-    width:200px; 
+    /*width:200px; */
+    width:100%; 
     -webkit-transition-property:all; 
     /*-webkit-transition-timing-function: cubic-bezier(5,0,5,0);*/ 
     -moz-transition-property: all; 
@@ -175,6 +179,15 @@ li:hover dt{
     -webkit-transform: rotate(45deg); 
     -moz-transform: rotate(45deg); 
 } 
+
+.banner{
+    width:90%;
+    height:250px;
+    margin:30px 5% auto 5%;
+    overflow:hidden;
+    cursor:pointer
+}
+
 </style> 
 </head> 
 <body> 
@@ -214,6 +227,67 @@ li:hover dt{
         </li> 
         <li class="last"><a href="#">菜单五</a></li> 
     </ul> 
-    </nav> 
+    </nav>
+
+    <ul class="banner">
+        <li><img src="316x316.png"></li>
+        <li><img src="720x480_2.png"></li>
+        <li><img src="720x480.png"></li>
+    </ul>
+
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+    $(function(){
+        var timer=setInterval(function(){
+            if($(".banner li:last").is(":hidden")){
+                $(".banner li:visible").addClass("on");
+                $(".banner li[class=on]").next().fadeIn("slow");
+                $(".banner li[class=on]").hide().removeClass("on");
+            }else{
+                $(".banner li:last").hide();
+                $(".banner li:first").fadeIn("slow");
+            }
+        },3000)
+
+        $(".banner li").hover(function(){
+            clearInterval(timer);
+        },function(){
+            timer=setInterval(function(){
+            if($(".banner li:last").is(":hidden")){
+                $(".banner li:visible").addClass("on");
+                $(".banner li[class=on]").next().fadeIn("slow");
+                $(".banner li[class=on]").hide().removeClass("on");
+            }else{
+                $(".banner li:last").hide();
+                $(".banner li:first").fadeIn("slow");
+            }
+        },3000)
+        })
+    })
+       
+    </script>
+
+    <HR style="FILTER: progid:DXImageTransform.Microsoft.Shadow(color:#987cb9,direction:145,strength:15); width:90%; margin-left:5%; margin-top:10px"  color=#987cb9 SIZE=1>
+
+
+    <div style="margin-top:10px; margin-left:5%">明心见性，可以为神</div>
+    <div style="background-color: orange; width: 800px; height:300px; margin-top:20px; margin-left:5%">
+        首页精选，推荐信息
+    </div>
+
+    <div class="user_info" style="background-color:green; width: 200px; height:300px; margin-top:20px; position:relative; top:-320px; left:900px">
+        推荐信息
+        <div class="news" style="background-color:yellow; width:200px; height:100px">
+            登录信息
+        </div>
+
+
+    </div>
+
+    <div class="bottom_info" id="bottom_info" style="display:inline-block; width:100%; text-align: center">
+        <a href="#">作者：哇哈哈哈哈</a>2015-07-08
+        <a href="#">你说会好玩么</a>
+        <span>不知道是怎么回事</span>
+    </div>
 </body> 
 </html> 
